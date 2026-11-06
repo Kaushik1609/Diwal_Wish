@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Diwali Greeting ✨</title>
+  
+  <!-- Google Fonts: Playfair Display & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient Night Sky with Stars & Glow -->
+  <div class="sky-container" id="skyContainer" aria-hidden="true">
+    <div class="stars-layer" id="starsLayer"></div>
+    <div class="ambient-glow glow-top"></div>
+    <div class="ambient-glow glow-bottom"></div>
+  </div>
+
+  <!-- Spark Burst Canvas Overlay for Lantern Cracker Effect -->
+  <canvas id="particleCanvas" class="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- Main Mobile-First App Card Shell -->
+  <main class="app-shell" id="appShell">
+
+    <!-- ================= SCREEN 1: NAME ================= -->
+    <section class="screen active" id="screen1" aria-label="Enter your name to begin">
+      <div class="screen-content">
+        <!-- Top Step Indicator -->
+        <div class="step-pill">
+          <span class="pill-dot"></span>
+          <span>STEP 1 OF 3</span>
+        </div>
+
+        <!-- Glowing Diya with Animated Flickering Flame -->
+        <div class="diya-hero-container">
+          <div class="diya-halo"></div>
+          <svg class="diya-svg" viewBox="0 0 200 160" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Glowing oil lamp (Diya)">
+            <defs>
+              <!-- Diya Base Gradients -->
+              <linearGradient id="clayGradient" x1="20" y1="90" x2="180" y2="150" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#b45309" />
+                <stop offset="45%" stop-color="#78350f" />
+                <stop offset="80%" stop-color="#451a03" />
+                <stop offset="100%" stop-color="#290e02" />
+              </linearGradient>
+              <linearGradient id="rimGradient" x1="30" y1="85" x2="170" y2="95" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#f59e0b" />
+                <stop offset="50%" stop-color="#fbbf24" />
+                <stop offset="100%" stop-color="#d97706" />
+              </linearGradient>
+              <!-- Flame Gradients -->
+              <radialGradient id="flameOuter" cx="50%" cy="80%" r="70%">
+                <stop offset="0%" stop-color="#ffedd5" />
+                <stop offset="35%" stop-color="#fbbf24" />
+                <stop offset="70%" stop-color="#f97316" />
+                <stop offset="100%" stop-color="rgba(239, 68, 68, 0)" />
+              </radialGradient>
+              <radialGradient id="flameInner" cx="50%" cy="75%" r="60%">
+                <stop offset="0%" stop-color="#ffffff" />
+                <stop offset="40%" stop-color="#fef08a" />
+                <stop offset="85%" stop-color="#f59e0b" />
+                <stop offset="100%" stop-color="rgba(245, 158, 11, 0)" />
+              </radialGradient>
+              <!-- Diya Base Shadow -->
+              <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="8" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+
+            <!-- Base Reflection Glow -->
+            <ellipse cx="100" cy="142" rx="65" ry="12" fill="rgba(0, 0, 0, 0.4)" />
+            <ellipse cx="100" cy="140" rx="45" ry="6" fill="rgba(255, 140, 26, 0.25)" />
+
+            <!-- Terracotta Diya Bowl -->
+            <path d="M 28 92 C 34 135, 166 135, 172 92 C 150 102, 50 102, 28 92 Z" fill="url(#clayGradient)" />
+            <!-- Diya Rim -->
+            <ellipse cx="100" cy="92" rx="72" ry="12" fill="url(#rimGradient)" />
+            <ellipse cx="100" cy="93" rx="64" ry="9" fill="#581c87" opacity="0.4" />
+            <!-- Ornamental Engravings on Diya -->
+            <circle cx="100" cy="115" r="2.5" fill="#fde68a" opacity="0.8" />
+            <circle cx="85" cy="114" r="2" fill="#fde68a" opacity="0.7" />
+            <circle cx="115" cy="114" r="2" fill="#fde68a" opacity="0.7" />
+            <circle cx="70" cy="111" r="1.8" fill="#fde68a" opacity="0.6" />
+            <circle cx="130" cy="111" r="1.8" fill="#fde68a" opacity="0.6" />
+            <path d="M 60 106 Q 100 120 140 106" stroke="#f59e0b" stroke-width="1.2" stroke-linecap="round" fill="none" opacity="0.5" />
+
+            <!-- Wick -->
+            <path d="M 98 94 C 99 87, 101 83, 100 78" stroke="#451a03" stroke-width="3" stroke-linecap="round" />
+
+            <!-- Animated Flame Group -->
+            <g class="diya-flame-group">
+              <!-- Outer Aura -->
+              <ellipse cx="100" cy="58" rx="26" ry="38" fill="url(#flameOuter)" filter="url(#softGlow)" opacity="0.75" />
+              <!-- Main Flame Teardrop -->
+              <path class="flame-body" d="M 100 24 C 92 46, 82 62, 85 75 C 88 88, 112 88, 115 75 C 118 62, 108 46, 100 24 Z" fill="url(#flameOuter)" />
+              <!-- Inner Bright Core -->
+              <path class="flame-core" d="M 100 42 C 95 56, 91 66, 92 73 C 94 80, 106 80, 108 73 C 109 66, 105 56, 100 42 Z" fill="url(#flameInner)" />
+            </g>
+          </svg>
+        </div>
+
+        <!-- Glass Input Card -->
+        <div class="glass-card input-card" id="inputCard">
+          <div class="input-card-header">
+            <span class="label-text">YOUR FULL NAME OR NICKNAME</span>
+            <span class="sparkle-icon" aria-hidden="true">✨</span>
+          </div>
+
+          <form id="nameForm" autocomplete="off" onsubmit="return false;">
+            <div class="input-wrapper" id="inputWrapper">
+              <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <input 
+                type="text" 
+                id="nameInput" 
+                class="glow-input" 
+                placeholder="Enter your name" 
+                maxlength="32" 
+                aria-label="Your Name"
+                spellcheck="false"
+              />
+            </div>
+
+            <button type="submit" id="continueBtn" class="btn btn-primary">
+              <span>Continue</span>
+              <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 2: WISH ================= -->
+    <section class="screen" id="screen2" aria-labelledby="screen2-title">
+      <div class="screen-content">
+        <!-- Top Step Indicator -->
+        <div class="step-pill-row">
+          <div class="step-pill">
+            <span class="pill-dot"></span>
+            <span>STEP 2 OF 3 • SACRED GREETING</span>
+          </div>
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            <span>Lighted</span>
+          </div>
+        </div>
+
+        <!-- Celestial Diya Mandala Circle Frame -->
+        <div class="mandala-portal-container">
+          <div class="mandala-ring ring-outer"></div>
+          <div class="mandala-ring ring-inner"></div>
+          <div class="portal-circle">
+            <div class="starry-portal-bg"></div>
+            <!-- Glowing Diya in Portal -->
+            <div class="portal-diya-wrap">
+              <div class="portal-glow-halo"></div>
+              <svg class="portal-diya-svg" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Base -->
+                <path d="M 24 72 C 30 105, 130 105, 136 72 C 120 80, 40 80, 24 72 Z" fill="#92400e" />
+                <ellipse cx="80" cy="72" rx="56" ry="9" fill="#f59e0b" />
+                <!-- Wick -->
+                <path d="M 79 74 C 80 68, 81 64, 80 60" stroke="#451a03" stroke-width="2.5" stroke-linecap="round" />
+                <!-- Flame -->
+                <ellipse cx="80" cy="46" rx="16" ry="24" fill="rgba(255, 180, 50, 0.4)" filter="blur(4px)" />
+                <path class="flame-body" d="M 80 20 C 74 36, 66 50, 68 60 C 70 70, 90 70, 92 60 C 94 50, 86 36, 80 20 Z" fill="#fbbf24" />
+                <path class="flame-core" d="M 80 34 C 76 44, 72 52, 73 58 C 75 64, 85 64, 87 58 C 88 52, 84 44, 80 34 Z" fill="#ffffff" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Personalized Greeting with Side Fireworks Animations -->
+        <div class="wish-celebration-wrapper">
+          <!-- Left Side Animated Firework / Sparkler -->
+          <div class="side-firework firework-left" aria-hidden="true">
+            <span class="firework-spark s1">✦</span>
+            <span class="firework-spark s2">✧</span>
+            <span class="firework-spark s3">✦</span>
+            <span class="firework-spark s4">✧</span>
+            <span class="firework-spark s5">✦</span>
+            <div class="firework-core"></div>
+            <div class="firework-ring"></div>
+            <div class="firework-fountain"></div>
+          </div>
+
+          <!-- Right Side Animated Firework / Sparkler -->
+          <div class="side-firework firework-right" aria-hidden="true">
+            <span class="firework-spark s1">✦</span>
+            <span class="firework-spark s2">✧</span>
+            <span class="firework-spark s3">✦</span>
+            <span class="firework-spark s4">✧</span>
+            <span class="firework-spark s5">✦</span>
+            <div class="firework-core"></div>
+            <div class="firework-ring"></div>
+            <div class="firework-fountain"></div>
+          </div>
+
+          <div class="wish-header-group">
+            <div class="celestial-ornament" aria-hidden="true">
+              <span class="ornament-line"></span>
+              <span class="ornament-gem">🪔</span>
+              <span class="ornament-line"></span>
+            </div>
+            <!-- Dynamically populated safely via textContent -->
+            <h1 class="main-heading wish-heading" id="screen2-title">
+              Happy Diwali, <span id="userNameWish"></span>!
+            </h1>
+            <p class="marathi-blessing" lang="mr">दिवाळीच्या हार्दिक शुभेच्छा!</p>
+          </div>
+        </div>
+
+        <!-- Grand Glass Wish Card -->
+        <div class="glass-card quote-card grand-quote-card">
+          <div class="card-ambient-glow"></div>
+          <span class="quote-mark open-quote">“</span>
+          <p class="quote-text main-blessing-text">
+            May your life shine as bright as a thousand diyas, filling every corner of your home with boundless peace, vibrant health, and golden prosperity.
+          </p>
+          <span class="quote-mark close-quote">”</span>
+          <div class="quote-sub-message">
+            <span class="sub-sparkle">✨</span>
+            <span>May this divine festival of lights illuminate your path with infinite joy, wisdom, and success.</span>
+            <span class="sub-sparkle">✨</span>
+          </div>
+        </div>
+
+        <!-- Receive Blessings Button -->
+        <div class="action-group">
+          <button type="button" id="receiveBlessingsBtn" class="btn btn-primary">
+            <span class="btn-sparkle" aria-hidden="true">✨</span>
+            <span>Receive blessings ✨</span>
+          </button>
+          
+          <button type="button" id="changeNameBtn" class="btn-text">
+            <span>← Change name</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCREEN 3: BLESSINGS ================= -->
+    <section class="screen" id="screen3" aria-labelledby="screen3-title">
+      <div class="screen-content screen3-content">
+        <!-- Top Step Indicator -->
+        <div class="step-pill">
+          <span class="pill-dot"></span>
+          <span>STEP 3 OF 3 • CELESTIAL WISHES</span>
+        </div>
+
+        <!-- Heading & Instructions -->
+        <div class="header-group screen3-header">
+          <h1 class="main-heading" id="screen3-title">Tap a lantern</h1>
+          <p class="sub-heading">Unlock auspicious blessings sent across the night sky.</p>
+        </div>
+
+        <!-- Interactive Lanterns Sky Field -->
+        <div class="lantern-sky" id="lanternSky" aria-label="Floating paper lanterns. Tap to burst and reveal blessings.">
+          <!-- 8 Glowing Lanterns dynamically or statically positioned -->
+        </div>
+
+        <!-- All Blessings Unlocked Banner (Hidden until 8/8) -->
+        <div class="completion-banner" id="completionBanner" style="display: none;">
+          <div class="completion-badge">
+            <span class="celebrate-icon">🪔</span>
+            <h3>May all of these come true 🪔</h3>
+            <p>Your Diwali sky is radiant with grace, fortune, and light.</p>
+          </div>
+          <button type="button" id="replayBtn" class="btn btn-secondary">
+            <span>Replay Lanterns 🔄</span>
+          </button>
+        </div>
+
+        <!-- Revealed Blessing Glass Card -->
+        <div class="glass-card blessing-display-card" id="blessingDisplayCard">
+          <div class="blessing-card-header">
+            <div class="blessing-badge">
+              <span class="badge-sparkle">✦</span>
+              <span id="blessingBadgeText">REVEALED BLESSING</span>
+            </div>
+            <button type="button" id="copyWishBtn" class="btn-mini-copy" title="Copy this wish">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span>Copy Wish</span>
+            </button>
+          </div>
+
+          <div class="blessing-message-container">
+            <p class="blessing-message-text" id="blessingMessage">
+              “Tap any glowing lantern above to burst it and reveal your Diwali blessing!”
+            </p>
+          </div>
+
+          <div class="blessing-card-footer">
+            <span class="bestowed-text">Bestowed by the Universe</span>
+          </div>
+        </div>
+
+        <!-- Counter & Progress Row -->
+        <div class="progress-bar-card">
+          <div class="counter-info">
+            <span class="counter-dot"></span>
+            <span id="blessingsCounterText"><strong>0 of 8</strong> blessings opened</span>
+          </div>
+          <span class="hint-text" id="counterHint">Tap lantern to reveal 👆</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Global Footer -->
+    <footer class="app-footer">
+      <p>Made with ❤️ by Kaushik</p>
+    </footer>
+
+  </main>
+
+  <!-- Toast Notification for Share / Copy -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="toast-icon">✨</span>
+    <span class="toast-text" id="toastText">Link copied!</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
